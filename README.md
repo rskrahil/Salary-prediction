@@ -9,7 +9,7 @@ A machine learning model that predicts employee salaries based on experience, te
 This project uses a hiring dataset to train a regression model that estimates the expected salary of a candidate. Missing data is handled intelligently before training, and the final model is serialized for reuse.
 
 ---
-<!--
+
 ## 🛠️ Tech Stack
 
 - **Language:** Python
@@ -18,7 +18,7 @@ This project uses a hiring dataset to train a regression model that estimates th
 - **Serialization:** Pickle
 
 ---
-
+<!--
 ## 📂 Dataset
 
 The dataset (`hiring.csv`) contains the following features:
