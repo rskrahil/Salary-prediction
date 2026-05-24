@@ -18,7 +18,7 @@ This project uses a hiring dataset to train a regression model that estimates th
 - **Serialization:** Pickle
 
 ---
-<!--
+
 ## 📂 Dataset
 
 The dataset (`hiring.csv`) contains the following features:
@@ -33,7 +33,7 @@ The dataset (`hiring.csv`) contains the following features:
 > Missing `experience` values are filled with `0`; missing `test_score` values are filled with the column mean.
 
 ---
-
+<!--
 ## 🚀 How It Works
 
 1. Load and preprocess the dataset
