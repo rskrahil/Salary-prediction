@@ -12,7 +12,7 @@ dataset['test_score'].fillna(dataset['test_score'].mean(),inplace=True)
 X=dataset.iloc[:,:3]
 #converting words to integer values
 def convert_to_int(word):
-    word_dict={'one':1,'two':2 ,'three':3,'four':4,'five':5,'six':6,'seven':7,
+    word_dict={'zero': 0,'one':1,'two':2 ,'three':3,'four':4,'five':5,'six':6,'seven':7,
                'eight':8,'nine':9,'ten':10,'eleven':11,'twelve':12,'zero':0,0:0}
     return word_dict[word]
 
@@ -44,7 +44,7 @@ model=pickle.load(open('model.pkl','rb'))
 y_pred = regressor.predict(X)
 r2 = r2_score(y, y_pred)
 mae = mean_absolute_error(y, y_pred)
-
 print(f"R² Score:                {r2:.4f}")
 print(f"Mean Absolute Error:     ${mae:,.2f}")
 print(f"Sample prediction        (2 yrs exp, test:9, interview:6): {model.predict([[2, 9, 6]])}")
+

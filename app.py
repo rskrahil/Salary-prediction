@@ -30,6 +30,18 @@ def predict_api():
     For direct API calls request
     '''
     data=request.get_json(force=True)
+    # Input validation
+    required_fields = ['experience', 'test_score', 'interview_score']
+    for field in required_fields:
+        if field not in data:
+            return jsonify({'error': f'Missing field: {field}'}), 400
+
+    if not (0 <= data['experience'] <= 20):
+        return jsonify({'error': 'experience must be between 0 and 20'}), 400
+    if not (1 <= data['test_score'] <= 10):
+        return jsonify({'error': 'test_score must be between 1 and 10'}), 400
+    if not (1 <= data['interview_score'] <= 10):
+        return jsonify({'error': 'interview_score must be between 1 and 10'}), 400
     prediction=model.predict([np.array(list(data.values()))])
     output=prediction[0]
     return jsonify(output)
