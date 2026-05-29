@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import pickle
+from sklearn.metrics import r2_score, mean_absolute_error
 
 dataset=pd.read_csv("hiring.csv")
 
@@ -38,4 +39,12 @@ pickle.dump(regressor,open('model.pkl','wb'))
 
 #loading model to compare the result
 model=pickle.load(open('model.pkl','rb'))
-print(model.predict([[2,9,6]]))
+#print(model.predict([[2,9,6]]))
+# Model evaluation
+y_pred = regressor.predict(X)
+r2 = r2_score(y, y_pred)
+mae = mean_absolute_error(y, y_pred)
+
+print(f"R² Score:                {r2:.4f}")
+print(f"Mean Absolute Error:     ${mae:,.2f}")
+print(f"Sample prediction        (2 yrs exp, test:9, interview:6): {model.predict([[2, 9, 6]])}")
