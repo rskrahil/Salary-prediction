@@ -9,19 +9,37 @@ model=pickle.load(open('model.pkl','rb'))
 @app.route('/')
 def home():
     return render_template('index.html')
-
+'''
 @app.route('/predict',methods=['POST'])
 def predict():
-    '''
-    for rendering result on html GUI
-    '''
+    
+    #for rendering result on html GUI
+    
     int_features=[int(x) for x in request.form.values()]
     final_features=[np.array(int_features)]
     prediction=model.predict(final_features)
 
     output=round(prediction[0],2)
     return render_template('index.html',prediction_text="Employee salary should be $ {}".format(output))
+'''
 
+@app.route('/predict', methods=['POST'])
+def predict():
+    '''
+    For rendering result on HTML GUI
+    '''
+    try:
+        int_features = [int(x) for x in request.form.values()]
+        final_features = [np.array(int_features)]
+        prediction = model.predict(final_features)
+        output = round(prediction[0], 2)
+        return render_template('index.html', prediction_text="Employee salary should be $ {}".format(output))
+    except ValueError:
+        return render_template('index.html', prediction_text="Invalid input. Please enter numeric values.")
+    except Exception as e:
+        return render_template('index.html', prediction_text="Something went wrong. Please try again.")
+    
+    
 
 @app.route('/predict_api',methods=['POST'])
 
