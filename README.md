@@ -10,6 +10,13 @@ This project uses a hiring dataset to train a regression model that estimates th
 
 ---
 
+## Features
+- Trained on real hiring data
+- Flask web interface for manual input
+- REST API endpoint for programmatic access
+- Input validation and error handling
+
+
 ## 🛠️ Tech Stack
 
 - **Language:** Python
