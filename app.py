@@ -5,6 +5,9 @@ import numpy as np
 app=Flask(__name__)
 model=pickle.load(open('model.pkl','rb'))
 
+@app.route('/health', methods=['GET'])
+def health():
+    return jsonify({"status": "ok"})
 
 @app.route('/')
 def home():
