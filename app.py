@@ -15,6 +15,22 @@ def health():
         "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     })
 
+@app.route('/predict_api', methods=['GET'])
+def predict_api_info():
+    return jsonify({
+        "expected_input": {
+            "experience": "integer (0-20)",
+            "test_score": "integer (1-10)",
+            "interview_score": "integer (1-10)"
+        },
+        "example": {
+            "experience": 2,
+            "test_score": 9,
+            "interview_score": 6
+        },
+        "endpoint": "POST /predict_api"
+    }) 
+
 
 @app.route('/')
 def home():
