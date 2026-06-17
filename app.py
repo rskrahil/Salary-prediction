@@ -1,13 +1,20 @@
 import pickle
 from flask import Flask,request,jsonify,render_template
 import numpy as np
+from datetime import datetime
+
 
 app=Flask(__name__)
 model=pickle.load(open('model.pkl','rb'))
 
 @app.route('/health', methods=['GET'])
 def health():
-    return jsonify({"status": "ok"})
+    return jsonify({
+        "status": "ok",
+        "model": "loaded",
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    })
+
 
 @app.route('/')
 def home():
